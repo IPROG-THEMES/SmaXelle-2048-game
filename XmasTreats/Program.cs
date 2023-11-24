@@ -1,3 +1,2 @@
-﻿// BONJOUR MA LIFE
+﻿// SmaXelle - JEU
 
-Console.WriteLine("Salut!!!!");
