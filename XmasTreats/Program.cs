@@ -86,3 +86,101 @@ void AffichonsLeJeu(char[][] tab)
 AffichonsLeJeu(plateauDeJeu);
 
 
+
+
+
+
+
+
+
+
+
+
+
+//début d'un tour
+//pour la ligne 1 !!!!!!!!!!!!!
+
+//sq que l'utilisateur veuille aller à droite
+
+char directionVoulue='F';//à enlever par la suite : travail réalisé par axl
+
+if (directionVoulue=='F')
+{
+    //prise des valeurs de chacune des cases de la première ligne
+    char var1=plateauDeJeu[1][7];
+    char var2=plateauDeJeu[1][5];
+    char var3=plateauDeJeu[1][3];
+    char var4=plateauDeJeu[1][1];
+
+    if (var1==var2 && var1!=' ')//on a allors le même bonbon dans les 2cases les + à droite, et on est sûr de ne pas avoir de vide
+    {
+        //fusionnage des bonbons, et on les met dans la case la plus à droite
+        if (var1=='¤')
+        {
+            plateauDeJeu[1][7]='@';
+        }
+        if (var1=='@')
+        {
+            plateauDeJeu[1][7]='o';
+        }
+        if (var1=='o')
+        {
+            plateauDeJeu[1][7]='J';
+        }
+
+    }
+    if (var3==var2 && var2!=' ')//on a allors le même bonbon dans les 2cases du milieu, et on est sûr de ne pas avoir de vide
+    {
+        //fusionnage des bonbons, et on les met dans la case la plus à droite entre les deux cases 
+        if (var2=='¤')
+        {
+            plateauDeJeu[1][5]='@';
+        }
+        if (var2=='@')
+        {
+            plateauDeJeu[1][5]='o';
+        }
+        if (var2=='o')
+        {
+            plateauDeJeu[1][5]='J';
+        }
+
+    }
+    if (var3==var4 && var4!=' ')//on a allors le même bonbon dans les 2cases les + à gauche, et on est sûr de ne pas avoir de vide
+    {
+        //fusionnage des bonbons, et on les met dans la case la plus à droite entre les deux cases 
+        if (var3=='¤')
+        {
+            plateauDeJeu[1][3]='@';
+        }
+        if (var3=='@')
+        {
+            plateauDeJeu[1][3]='o';
+        }
+        if (var3=='o')
+        {
+            plateauDeJeu[1][3]='J';
+        }
+
+    }
+
+}
+
+//ensuite, on s'occupe de décaller au max les bonbons vers la droite, en comblant les blans, mais en ne fusionnant rien  du tout
+
+//dans ce but on va utiliser une fonction qui spl 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
