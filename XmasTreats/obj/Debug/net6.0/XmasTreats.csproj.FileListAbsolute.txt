@@ -1,0 +1,15 @@
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.csproj.AssemblyReference.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.AssemblyInfoInputs.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.AssemblyInfo.cs
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.csproj.CoreCompileInputs.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\bin\Debug\net6.0\XmasTreats.exe
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\bin\Debug\net6.0\XmasTreats.deps.json
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\bin\Debug\net6.0\XmasTreats.runtimeconfig.json
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\bin\Debug\net6.0\XmasTreats.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\bin\Debug\net6.0\XmasTreats.pdb
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\refint\XmasTreats.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.pdb
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\XmasTreats.genruntimeconfig.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\obj\Debug\net6.0\ref\XmasTreats.dll
