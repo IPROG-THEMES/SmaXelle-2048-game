@@ -1,98 +1,16 @@
 ﻿// SmaXelle - JEU
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Création du plateauDeJeu :
+//Création d'un tableau imbriqué de char qui s'appelle plateauDeJeu de 9 lignes et de ? colonnes
+char [][] plateauDeJeu = new char [9][];
+
+//Création des 9 colonnes pour chacune des 9 lignes 
+for (int i = 0; i < 9; i++)//i se balade dans les lignes du plateauDeJeu
+{
+    plateauDeJeu[i]=new char[9];//dans chaque ligne, on y met 9 colonnes
+}
+//on a ainsi un plateau de jeu de 16 cases de jeu, et tout le reste des cases permettent de dessiner le cadrillage
 
 
 
@@ -100,28 +18,103 @@
 // NOMBRE DE COUPS
 //on demande au joueur le nombre de coups maximum autorisé
 
-using System.Collections;
 
 int nbCoupsMax;
 Console.Write("Veuillez entrer le nombre de coups maximum : ");
 nbCoupsMax = Convert.ToInt32(Console.ReadLine()!);
 
 // demander : si chiffre pas un int, message erreur + recommencer
-if (nbCoupsMax)
+// LE FAIRE URGENT!!!!!!!!! 
 
 // on affiche à nouveau le nombre de coups
 Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
 
 
 
+
+//Remplissage du plateauDeJeu :
+
+//Remplissage de '|' :
+for (int k = 0; k < 8; k++)
+{
+    for (int m = 0; m < 5; m++)//m prend les valeurs 0, 1, 2, 3 et 4
+    {
+        plateauDeJeu[k][2*m]='|';//2*m prend les valeurs 0, 2, 4, 6 et 8
+    }
+}
+
+
+//Remplissage de '-' :
+//Remplissage de la toute première ligne et de la toute dernière :
+for (int m = 0; m < 8; m++)
+{
+    plateauDeJeu[0][m]='-';
+    plateauDeJeu[8][m]='-';
+}
+
+for (int n = 0; n < 4; n++)//n prend les valeurs 0, 1, 2 et 3
+{
+    //2*n+1 prendra ainsi les valeurs 1, 3, 5 et 7
+    for (int p = 1; p < 4; p++)//p prend les valeurs 1, 2 et 3, donc 2*p prend les valeurs 2, 4 et 6
+    {
+        plateauDeJeu[2*p][2*n+1]='-';
+    }
+}
+
+
+//Remplissage de '.' (pour les quatres sommets du grand carré)
+plateauDeJeu[0][0]='.';
+plateauDeJeu[0][8]='.';
+plateauDeJeu[8][0]='.';
+plateauDeJeu[8][8]='.';
+
+
+//Remplissage de toutes les cases non remplies de vide, soit de ' '.
+for (int ligne = 0; ligne < 9; ligne++)//la variable ligne se balade dans les lignes
+{
+    for (int colonne = 0; colonne < 9; colonne++)//la variable colonne se balade dans les colonnes
+    {
+        if (plateauDeJeu[ligne][colonne] != '-' && plateauDeJeu[ligne][colonne] != '|' && plateauDeJeu[ligne][colonne]!='.')//si la case n'est pas remplie d'un '_' ni d'un '.' ni d'un '|'
+        {
+            plateauDeJeu[ligne][colonne] = ' ';//ALORS on la remplie de vide  
+        }
+    }
+}
+//le plateauDeJeu est à présent initialisé (les bordures sont créées, et les 16 cases de jeu sont remplies de vide)
+
+
+
+
+//création du sous-programme AfficherLeJeu qui nous permettra, lorsqu'il sera appelé, d'afficher la totalité du plateau de jeu
+void AfficherLeJeu(char[][] tab)
+{
+    for (int ligne = 0; ligne < tab.Length; ligne++)
+    {
+        for (int colonne = 0; colonne < tab[ligne].Length; colonne++)
+        {
+            Console.Write(tab[ligne][colonne] + " ");
+        }
+        Console.WriteLine(); // Pour passer à la ligne suivante après chaque ligne
+    }
+}
+
+//Utilisation du sous-programme qui vient d'être créé, afin d'afficher le plateau de jeu vide
+AfficherLeJeu(plateauDeJeu);
+
+
+
+
+
+
 // DEBUT DU JEU ET CONSIGNES
 //on dit au joueur que le jeu va commencer et on lui explique les règles
+Console.WriteLine();
 Console.WriteLine("Le jeu va dès à présent débuter.");
 Console.WriteLine($"Vous allez devoir assembler les bonbons de même forme afin d'obtenir un maximum de points en seulement {nbCoupsMax} coups!");
-Console.WriteLine("Pour déplacer les bonbons vers le haut, veuillez entrer la lettre E");
-Console.WriteLine("Pour déplacer les bonbons vers le bas, veuillez entrer la lettre D");
-Console.WriteLine("Pour déplacer les bonbons vers la droite, veuillez entrer la lettre F");
-Console.WriteLine("Pour déplacer les bonbons vers la gauche, veuillez entrer la lettre S");
+Console.WriteLine("Pour déplacer les bonbons vers le haut, veuillez entrer la lettre E.");
+Console.WriteLine("Pour déplacer les bonbons vers le bas, veuillez entrer la lettre D.");
+Console.WriteLine("Pour déplacer les bonbons vers la droite, veuillez entrer la lettre F.");
+Console.WriteLine("Pour déplacer les bonbons vers la gauche, veuillez entrer la lettre S.");
 Console.WriteLine("BONNE CHANCE!");
 
 
@@ -129,19 +122,23 @@ Console.WriteLine("BONNE CHANCE!");
 // PLACER LES BONBONS ALEATOIREMENT
 //création d'une fonction qui pourra se répéter à chaque fin de partie
 //la fonction prend en argument le plateau de jeu afin de le compléter
-void PlacerBonbonsAleatoirement (ref plateauDeJeu)
+void PlacerBonbonsAleatoirement (char[][] tab)
 {
     for (int bonbon = 1; bonbon<=2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
     {
         Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
-        char caseChoisie;
+        int ligne;
+        int colonne;
         do
         {
-            int ligne = caseDuPlateau.Next(0, 9);
-            int colonne = caseDuPlateau.Next(0, 9);
-            caseChoisie = plateauDeJeu[ligne,colonne];
+            ligne = caseDuPlateau.Next(0, 9);
+            colonne = caseDuPlateau.Next(0, 9);
         }
-        while (caseChoisie!=' '); // la boucle do-while continue tant que la case choisie c'est pas vide, peu importe le bonbon qu'elle comporte
-        caseChoisie='¤'; // lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
+        while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie c'est pas vide, peu importe le bonbon qu'elle comporte
+        tab[ligne][colonne]='¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
     }
 }
+
+
+PlacerBonbonsAleatoirement(plateauDeJeu);
+AfficherLeJeu(plateauDeJeu);
