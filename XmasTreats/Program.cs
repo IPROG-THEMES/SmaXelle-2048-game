@@ -1,5 +1,5 @@
-﻿// SmaXelle - JEU
 
+<<<<<<< HEAD
 
 // PRESENTATION
 
@@ -235,3 +235,5 @@ Console.WriteLine("*************************************************************
 Console.WriteLine($"Vous obtenez un superbe score de {scoreFinal} points! Félicitations!");
 Console.WriteLine("*********************************************************************");
 Console.WriteLine();
+=======
+>>>>>>> 50220b1c7940c24d4e82f3503e576e7583bbfed0
