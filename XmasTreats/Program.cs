@@ -2,6 +2,7 @@
 
 
 // NOMBRE DE COUPS
+
 //on demande au joueur le nombre de coups maximum autorisé
 int nbCoupsMax;
 Console.Write("Veuillez entrer le nombre de coups maximum : ");
@@ -13,8 +14,8 @@ Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
 
 
 
+//CREATION DU plateauDeJeu :
 
-//Création du plateauDeJeu :
 //Création d'un tableau imbriqué de char qui s'appelle plateauDeJeu de 9 lignes et de ? colonnes
 char [][] plateauDeJeu = new char [9][];
 
@@ -28,7 +29,7 @@ for (int i = 0; i < 9; i++)//i se balade dans les lignes du plateauDeJeu
 
 
 
-//Remplissage du plateauDeJeu :
+//REMPLISSAGE DU plateauDeJeu
 
 //Remplissage de '|' :
 for (int k = 0; k < 8; k++)
@@ -80,6 +81,7 @@ for (int ligne = 0; ligne < 9; ligne++)//la variable ligne se balade dans les li
 
 
 
+// FONCTION AFFICHERLEJEU
 
 //création du sous-programme AfficherLeJeu qui nous permettra, lorsqu'il sera appelé, d'afficher la totalité du plateau de jeu
 void AfficherLeJeu(char[][] tab)
@@ -103,6 +105,7 @@ AfficherLeJeu(plateauDeJeu);
 
 
 // DEBUT DU JEU ET CONSIGNES
+
 //on dit au joueur que le jeu va commencer et on lui explique les règles
 Console.WriteLine();
 Console.WriteLine("Le jeu va dès à présent débuter.");
@@ -116,6 +119,7 @@ Console.WriteLine("BONNE CHANCE!");
 
 
 // PLACER LES BONBONS ALEATOIREMENT
+
 //création d'une fonction qui pourra se répéter à chaque fin de partie
 //la fonction prend en argument le plateau de jeu afin de le compléter
 void PlacerBonbonsAleatoirement (char[][] tab)
@@ -158,3 +162,6 @@ while (directionVoulue!='E' && directionVoulue!='D' && directionVoulue!='S' && d
     Console.Write("Choisissez à nouveau une direction parmi les propositions (E vers le haut, D vers le bas, S vers la gauche, F vers la droite) : ");
     directionVoulue = Convert.ToChar(Console.ReadLine()!);
 }
+
+
+// 
