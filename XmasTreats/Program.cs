@@ -1,6 +1,19 @@
 ﻿// SmaXelle - JEU
 
 
+// NOMBRE DE COUPS
+//on demande au joueur le nombre de coups maximum autorisé
+int nbCoupsMax;
+Console.Write("Veuillez entrer le nombre de coups maximum : ");
+nbCoupsMax = Convert.ToInt32(Console.ReadLine()!);
+
+// on affiche à nouveau le nombre de coups
+Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
+
+
+
+
+
 //Création du plateauDeJeu :
 //Création d'un tableau imbriqué de char qui s'appelle plateauDeJeu de 9 lignes et de ? colonnes
 char [][] plateauDeJeu = new char [9][];
@@ -11,23 +24,6 @@ for (int i = 0; i < 9; i++)//i se balade dans les lignes du plateauDeJeu
     plateauDeJeu[i]=new char[9];//dans chaque ligne, on y met 9 colonnes
 }
 //on a ainsi un plateau de jeu de 16 cases de jeu, et tout le reste des cases permettent de dessiner le cadrillage
-
-
-
-
-// NOMBRE DE COUPS
-//on demande au joueur le nombre de coups maximum autorisé
-
-
-int nbCoupsMax;
-Console.Write("Veuillez entrer le nombre de coups maximum : ");
-nbCoupsMax = Convert.ToInt32(Console.ReadLine()!);
-
-// demander : si chiffre pas un int, message erreur + recommencer
-// LE FAIRE URGENT!!!!!!!!! 
-
-// on affiche à nouveau le nombre de coups
-Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
 
 
 
@@ -142,3 +138,23 @@ void PlacerBonbonsAleatoirement (char[][] tab)
 
 PlacerBonbonsAleatoirement(plateauDeJeu);
 AfficherLeJeu(plateauDeJeu);
+
+
+// 1ER TOUR 
+
+// création d'une variable directionVoulue
+char directionVoulue;
+// demander au joueur de choisir une direction
+// utilisation de ESDF pour que chaque forme d'ordinateur s'y retrouve
+Console.Write("Choisissez une direction (E vers le haut, D vers le bas, S vers la gauche, F vers la droite) : ");
+directionVoulue = Convert.ToChar(Console.ReadLine()!);
+
+// si la personne se trompe de touche et mets une autre lettre, le programme lui demande de recommencer
+// boucle while parce que l'action va se répéter tant que l'utilisateur ne rentre pas une des lettres proposées
+// utilisation des "&&" donc "et" parce que l'utilisateur a le choix entre ces 4 lettres et doit en choisir une
+while (directionVoulue!='E' && directionVoulue!='D' && directionVoulue!='S' && directionVoulue!='F')
+{
+    Console.WriteLine("ERREUR");
+    Console.Write("Choisissez à nouveau une direction parmi les propositions (E vers le haut, D vers le bas, S vers la gauche, F vers la droite) : ");
+    directionVoulue = Convert.ToChar(Console.ReadLine()!);
+}
