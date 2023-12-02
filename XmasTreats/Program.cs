@@ -1,5 +1,6 @@
 ﻿// SmaXelle - JEU
 
+
 //---------------------------------------------------------------------------------------------------------------------------
 
 
@@ -124,17 +125,17 @@ Console.WriteLine("BONNE CHANCE!");
 //la fonction prend en argument le plateau de jeu afin de le compléter
 void PlacerBonbonsAleatoirement(char[][] tab)
 {
-    for (int bonbon = 1; bonbon <= 2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
+    for (int bonbon = 1; bonbon <= 2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois, pour les deux bonbons à mettre aléatoirement dans le plateau de jeu
     {
         Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
         int ligne;
         int colonne;
         do
         {
-            ligne = caseDuPlateau.Next(0, 9);
-            colonne = caseDuPlateau.Next(0, 9);
+            ligne = caseDuPlateau.Next(0, 9);//tirage d'une ligne de manière aléatoire
+            colonne = caseDuPlateau.Next(0, 9);//tirage d'une colonne de manière aléatoire
         }
-        while (tab[ligne][colonne] != ' '); // la boucle do-while continue tant que la case choisie c'est pas vide, peu importe le bonbon qu'elle comporte
+        while (tab[ligne][colonne] != ' '); // la boucle do-while continue tant que la case choisie c'est pas vide, peu importe le motif qu'elle comporte
         tab[ligne][colonne] = '¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
     }
 }
@@ -143,7 +144,7 @@ void PlacerBonbonsAleatoirement(char[][] tab)
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-//début d'un tour
+//début d'un tour :
 PlacerBonbonsAleatoirement(plateauDeJeu);
 AfficherLeJeu(plateauDeJeu);
 
@@ -164,7 +165,7 @@ void FusionGoRight(char[][] tab)
     for (int j = 0; j < 4; j++)//i permet de passer sur chaque ligne du tableau, et ainsi de trier toutes les lignes
     {
         int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases)
-        //stockage des valeurs de chacune des cases de la première ligne, avec var1 celle la + à droite et var4 celle la + à gauche
+        //stockage des valeurs de chacune des cases de jeu de la première ligne, avec var1 celle la + à droite, et var4 celle la + à gauche
         char var1 = tab[i][7];
         char var2 = tab[i][5];
         char var3 = tab[i][3];
@@ -190,7 +191,7 @@ void FusionGoRight(char[][] tab)
             }
 
         }
-        //idem maintenant pour les deux cases du milieu, puis pour les deux cases les + à gauche
+        //idem maintenant pour le reste des cas possibles :
         if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
@@ -284,7 +285,7 @@ void FusionGoRight(char[][] tab)
         }
     }
 }
-//
+
 
 //2.FusionGoLeft
 void FusionGoLeft(char[][] tab)
@@ -298,9 +299,9 @@ void FusionGoLeft(char[][] tab)
         char var3 = tab[i][3];
         char var4 = tab[i][1];
 
-        if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2cases les + à droite, et on est sûr de ne pas avoir de vide dans ces deux cases là
+        if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2cases les + à gauche, et on est sûr de ne pas avoir de vide dans ces deux cases là
         {
-            //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à droite entre les deux cases évaluées
+            //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à gauche entre les deux cases évaluées
             if (var1 == '¤')
             {
                 tab[i][7] = '@';
@@ -318,7 +319,6 @@ void FusionGoLeft(char[][] tab)
             }
 
         }
-        //idem maintenant pour les deux cases du milieu, puis pour les deux cases les + à gauche
         if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
