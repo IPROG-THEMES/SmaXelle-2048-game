@@ -283,6 +283,24 @@ void FusionGoRight(char[][] tab)
                 tab[i][1] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var3 == ' ' && var2 == var4 && var1!=var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][5] = '@';
+                tab[i][1] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][5] = 'o';
+                tab[i][1] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][5] = 'J';
+                tab[i][1] = ' ';
+            }
+        }
     }
 }
 
@@ -392,6 +410,24 @@ void FusionGoLeft(char[][] tab)
             }
         }
         if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][3] = '@';
+                tab[i][7] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][3] = 'o';
+                tab[i][7] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][3] = 'J';
+                tab[i][7] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 != ' ' && var3 == ' ' && var2 == var4 && var1!=var2)
         {
             if (var2 == '¤')
             {
@@ -533,6 +569,24 @@ void FusionGoUp(char[][] tab)
                 tab[7][i] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var3 == ' ' && var2 == var4 && var1 !=var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[7][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[7][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[7][i] = ' ';
+            }
+        }
     }
 }
 
@@ -543,7 +597,7 @@ void FusionGoDown(char[][] tab)
     {
         int i =2*j+1;
 
-        char var1 = tab[1][i];
+        char var1 = tab[1][i];//esske je ne me suis pas trompée ici?????????? il faut pas plutot ecrire 7 5 3 1 ??????????
         char var2 = tab[3][i];
         char var3 = tab[5][i];
         char var4 = tab[7][i];
@@ -639,6 +693,24 @@ void FusionGoDown(char[][] tab)
             }
         }
         if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[3][i] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 != ' ' && var2 == ' ' && var2 == var4 && var4!=var3)
         {
             if (var2 == '¤')
             {
