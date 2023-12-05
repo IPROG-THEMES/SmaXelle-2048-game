@@ -1,0 +1,15 @@
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\bin\Debug\net6.0\versionpc.exe
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\bin\Debug\net6.0\versionpc.deps.json
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\bin\Debug\net6.0\versionpc.runtimeconfig.json
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\bin\Debug\net6.0\versionpc.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\bin\Debug\net6.0\versionpc.pdb
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.csproj.AssemblyReference.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.AssemblyInfoInputs.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.AssemblyInfo.cs
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.csproj.CoreCompileInputs.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\refint\versionpc.dll
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.pdb
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\versionpc.genruntimeconfig.cache
+C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\versionpc\obj\Debug\net6.0\ref\versionpc.dll

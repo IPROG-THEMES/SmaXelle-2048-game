@@ -116,13 +116,13 @@ Console.WriteLine("Pour déplacer les bonbons vers la droite, veuillez entrer la
 Console.WriteLine("Pour déplacer les bonbons vers la gauche, veuillez entrer la lettre S.");
 Console.WriteLine("BONNE CHANCE!");
 
-
+// ici mettre un truc pour que l'utilisateur choisisse le niveau de son jeu (tapez respectivement 1 2 3 ou 4 si vous voulez facile moyen difficile hardcore)
 //---------------------------------------------------------------------------------------------------------------------------
 
 
 // PLACER LES BONBONS ALEATOIREMENT
 //création d'une fonction qui pourra se répéter à chaque fin de partie
-//la fonction prend en argument le plateau de jeu afin de le compléter
+//la fonction prend en argument le plateau de jeu afin d'y mettre deux bonbons de manière aléatoire
 void PlacerBonbonsAleatoirement(char[][] tab)
 {
     for (int bonbon = 1; bonbon <= 2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois, pour les deux bonbons à mettre aléatoirement dans le plateau de jeu
@@ -142,7 +142,7 @@ void PlacerBonbonsAleatoirement(char[][] tab)
 
 
 //---------------------------------------------------------------------------------------------------------------------------
-
+//*******************************************************ici commencer une grosse boucle qui se termine si nombre de coups max a été atteint
 
 //début d'un tour :
 PlacerBonbonsAleatoirement(plateauDeJeu);
@@ -286,134 +286,379 @@ void FusionGoRight(char[][] tab)
     }
 }
 
-
 //2.FusionGoLeft
 void FusionGoLeft(char[][] tab)
 {
     for (int j = 0; j < 4; j++)//i permet de passer sur chaque ligne du tableau, et ainsi de trier toutes les lignes
     {
         int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases)
-        //stockage des valeurs de chacune des cases de la première ligne, avec var1 celle la + à droite et var4 celle la + à gauche
-        char var1 = tab[i][7];
-        char var2 = tab[i][5];
-        char var3 = tab[i][3];
-        char var4 = tab[i][1];
+        
+        //stockage des valeurs de chacune des cases de la première ligne, avec var1 celle la + à droite et var4 celle la + à gauche :
+        char var1 = tab[i][1];
+        char var2 = tab[i][3];
+        char var3 = tab[i][5];
+        char var4 = tab[i][7];
 
         if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2cases les + à gauche, et on est sûr de ne pas avoir de vide dans ces deux cases là
         {
             //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à gauche entre les deux cases évaluées
             if (var1 == '¤')
             {
-                tab[i][7] = '@';
-                tab[i][5] = ' ';
+                tab[i][1] = '@';
+                tab[i][3] = ' ';
             }
             if (var1 == '@')
             {
-                tab[i][7] = 'o';
-                tab[i][5] = ' ';
+                tab[i][1] = 'o';
+                tab[i][3] = ' ';
             }
             if (var1 == 'o')
             {
-                tab[i][7] = 'J';
-                tab[i][5] = ' ';
+                tab[i][1] = 'J';
+                tab[i][3] = ' ';
             }
-
         }
+
         if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
             {
-                tab[i][5] = '@';
-                tab[i][3] = ' ';
+                tab[i][3] = '@';
+                tab[i][5] = ' ';
             }
             if (var2 == '@')
             {
-                tab[i][5] = 'o';
-                tab[i][3] = ' ';
+                tab[i][3] = 'o';
+                tab[i][5] = ' ';
             }
             if (var2 == 'o')
             {
-                tab[i][5] = 'J';
-                tab[i][3] = ' ';
+                tab[i][3] = 'J';
+                tab[i][5] = ' ';
             }
-
         }
         if (var4 != ' ' && var3 == var4)
         {
             if (var3 == '¤')
             {
-                tab[i][3] = '@';
-                tab[i][1] = ' ';
+                tab[i][5] = '@';
+                tab[i][7] = ' ';
             }
             if (var3 == '@')
             {
-                tab[i][3] = 'o';
-                tab[i][1] = ' ';
+                tab[i][5] = 'o';
+                tab[i][7] = ' ';
             }
             if (var3 == 'o')
             {
-                tab[i][3] = 'J';
-                tab[i][1] = ' ';
+                tab[i][5] = 'J';
+                tab[i][7] = ' ';
             }
         }
         if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
         {
             if (var1 == '¤')
             {
-                tab[i][7] = '@';
-                tab[i][1] = ' ';
+                tab[i][1] = '@';
+                tab[i][7] = ' ';
             }
             if (var1 == '@')
             {
-                tab[i][7] = 'o';
-                tab[i][1] = ' ';
+                tab[i][1] = 'o';
+                tab[i][7] = ' ';
             }
             if (var1 == 'o')
             {
-                tab[i][7] = 'J';
-                tab[i][1] = ' ';
+                tab[i][1] = 'J';
+                tab[i][7] = ' ';
             }
         }
         if (var1 != ' ' && var2 == ' ' && var3 == var1)
         {
             if (var3 == '¤')
             {
-                tab[i][7] = '@';
-                tab[i][3] = ' ';
+                tab[i][1] = '@';
+                tab[i][5] = ' ';
             }
             if (var3 == '@')
             {
-                tab[i][7] = 'o';
-                tab[i][3] = ' ';
+                tab[i][1] = 'o';
+                tab[i][5] = ' ';
             }
             if (var3 == 'o')
             {
-                tab[i][7] = 'J';
-                tab[i][3] = ' ';
+                tab[i][1] = 'J';
+                tab[i][5] = ' ';
             }
         }
         if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
         {
             if (var2 == '¤')
             {
-                tab[i][5] = '@';
-                tab[i][1] = ' ';
+                tab[i][3] = '@';
+                tab[i][7] = ' ';
             }
             if (var2 == '@')
             {
-                tab[i][5] = 'o';
-                tab[i][1] = ' ';
+                tab[i][3] = 'o';
+                tab[i][7] = ' ';
             }
             if (var2 == 'o')
             {
-                tab[i][5] = 'J';
-                tab[i][1] = ' ';
+                tab[i][3] = 'J';
+                tab[i][7] = ' ';
             }
         }
     }
 }
 
-//*faire FusionGoUp et FusionGoDown*
+//3. FusionGoUp
+void FusionGoUp(char[][] tab)
+{
+    for (int j = 0; j < 4; j++)//i permet de passer sur chaque colonne du tableau, et ainsi de trier toutes les lignes
+    {
+        int i =2*j+1; // i nous permet d'obtenir les indices des colonnes sur les lesquelles on joue seulement (et non les colonnes de délimitations des cases)
+        
+        //parcours du plateau de jeu colonne par colonne :
+        char var1 = tab[1][i];
+        char var2 = tab[3][i];
+        char var3 = tab[5][i];
+        char var4 = tab[7][i];
+
+        if (var1 != ' ' && var1 == var2)
+        {
+            if (var1 == '¤')
+            {
+                tab[1][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var1 == '@')
+            {
+                tab[1][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var1 == 'o')
+            {
+                tab[1][i] = 'J';
+                tab[3][i] = ' ';
+            }
+        }
+        if (var2 != ' ' && var3 == var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[5][i]= ' ';
+            }
+        }
+        if (var4 != ' ' && var3 == var4)
+        {
+            if (var3 == '¤')
+            {
+                tab[5][i] = '@';
+                tab[7][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[5][i] = 'o';
+                tab[7][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[5][i] = 'J';
+                tab[7][i] = ' ';
+            }
+        }
+        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        {
+            if (var1 == '¤')
+            {
+                tab[1][i] = '@';
+                tab[7][i] = ' ';
+            }
+            if (var1 == '@')
+            {
+                tab[1][i] = 'o';
+                tab[7][i] = ' ';
+            }
+            if (var1 == 'o')
+            {
+                tab[1][i] = 'J';
+                tab[7][i]= ' ';
+            }
+        }
+        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[1][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[1][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[1][i] = 'J';
+                tab[5][i] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[7][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[7][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[7][i] = ' ';
+            }
+        }
+    }
+}
+
+//4.FusionGoDown
+void FusionGoDown(char[][] tab)
+{
+    for (int j = 0; j < 4; j++)
+    {
+        int i =2*j+1;
+
+        char var1 = tab[1][i];
+        char var2 = tab[3][i];
+        char var3 = tab[5][i];
+        char var4 = tab[7][i];
+
+        if (var1 != ' ' && var1 == var2)
+        {
+            if (var1 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[1][i] = ' ';
+            }
+            if (var1 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[1][i] = ' ';
+            }
+            if (var1 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[1][i] = ' ';
+            }
+        }
+        if (var2 != ' ' && var3 == var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[5][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[5][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[5][i] = 'J';
+                tab[3][i]= ' ';
+            }
+        }
+        if (var4 != ' ' && var3 == var4)
+        {
+            if (var3 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[5][i] = ' ';
+            }
+        }
+        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        {
+            if (var1 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[1][i] = ' ';
+            }
+            if (var1 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[1][i] = ' ';
+            }
+            if (var1 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[1][i]= ' ';
+            }
+        }
+        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[5][i] = '@';
+                tab[1][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[5][i] = 'o';
+                tab[1][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[5][i] = 'J';
+                tab[1][i] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[3][i] = ' ';
+            }
+        }
+    }
+}
+
 
 //---------------------------------------------------------------------------------------------------------------------------
 
@@ -426,14 +671,14 @@ void DecallerLesTreatsDroite(char[][] tab)
 {
     for (int m = 0; m < 9; m++)//pour parcourir chacune des 9 lignes du plateauDeJeu
     {
-        for (int n = 0; n < 7; n++)//on le fait 7 fois cr cest le max pour tout decaller à droite (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
+        for (int n = 0; n < 7; n++)//on le fait 7 fois car cest le max pour tout decaller à droite (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
         {
             for (int i = 3; i > 0; i--) //i prend les valeurs 3 2 1 
             {
                 int p = 2 * i + 1;//p prend les valeurs 7 5 3
 
-                char varD = tab[m][p];//avec m la ligne, et p = 7, 5 ou 3, càd que varD prend la valeur de var4, var3 ou var2
-                char varG = tab[m][p - 2]; //p-2 prend les valeurs 5, 3, ou 1, càd que varG prend les valeurs de var5, var3 ou var1
+                char varD = tab[m][p];//avec m la ligne, et p = 7, 5 ou 3, càd que varD prend la valeur de var1, var2 ou var3
+                char varG = tab[m][p - 2]; //p-2 prend les valeurs 5, 3, ou 1, càd que varG prend les valeurs de var2, var3 ou var4
 
                 if (varD == ' ')//si case de droite est vide
                 {
@@ -453,21 +698,21 @@ void DecallerLesTreatsGauche(char[][] tab)
 {
     for (int m = 0; m < 9; m++)//pour parcourir chacune des 9 lignes du plateauDeJeu
     {
-        for (int n = 0; n < 7; n++)//on le fait 7 fois cr cest le max pour tout decaller à gauche (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
+        for (int n = 0; n < 7; n++)//on le fait 7 fois car cest le max pour tout decaller à gauche (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
         {
-            for (int i = 3; i > 0; i--) //i prend les valeurs 3 2 1 
+            for (int i = 0; i <3; i++) //i prend les valeurs 0 1 2 
             {
-                int p = 2 * i + 1;//p prend les valeurs 7 5 3
+                int p = 2 * i + 1;//p prend les valeurs 1 3 5
 
-                char varD = tab[m][p];//avec m la ligne, et p = 7, 5 ou 3, càd que varD prend la valeur de var4, var3 ou var2
-                char varG = tab[m][p - 2]; //p-2 prend les valeurs 5, 3, ou 1, càd que varG prend les valeurs de var5, var3 ou var1
+                char varG = tab[m][p];//avec m la ligne, et p = 1 3 5, càd que varG prend la valeur de var4, var3 ou var2
+                char varD = tab[m][p + 2]; //p+2 prend les valeurs 3, 5 ou 7, càd que varD prend les valeurs de var3, var2 ou var1
 
-                if (varD == ' ')//si case de droite est vide
+                if (varG == ' ')//si case de gauche est vide
                 {
-                    if (varG != ' ')//si case de gacuhe non vide
+                    if (varD != ' ')//si case de droite non vide
                     {
-                        tab[m][p] = varG;//alors on décale varG dans varD
-                        tab[m][p - 2] = ' ';//on vide la case de gauche
+                        tab[m][p] = varD;//alors on décale varD dans varG
+                        tab[m][p + 2] = ' ';//on vide la case de droite
                     }
                 }
             }
@@ -476,9 +721,58 @@ void DecallerLesTreatsGauche(char[][] tab)
 }
 
 //3.DecallerLesTreatsHaut :
+void DecallerLesTreatsHaut(char[][] tab)
+{
+    for (int m = 0; m < 9; m++)//pour parcourir chacune des 9 colonnes du plateauDeJeu
+    {
+        for (int n = 0; n < 7; n++)//il y a 7 combinaisons possibles de répartition des treats sur une colonne
+        {
+            for (int i = 0; i <3; i++) //i prend les valeurs 0 1 2 
+            {
+                int p = 2 * i + 1;//p prend les valeurs 1 3 5
+
+                char varH = tab[p][m];//avec m la ligne, et p = 1 3 5, càd que varG prend la valeur de var4, var3 ou var2
+                char varB = tab[p + 2][m]; //p+2 prend les valeurs 3, 5 ou 7, càd que varD prend les valeurs de var3, var2 ou var1
+
+                if (varH == ' ')//si case de gauche est vide
+                {
+                    if (varB != ' ')//si case de droite non vide
+                    {
+                        tab[p][m] = varB;//alors on décale varD dans varG
+                        tab[p + 2][m] = ' ';//on vide la case de droite
+                    }
+                }
+            }
+        }
+    }
+}
 
 //4.DecallerLesTreatsBas :
+void DecallerLesTreatsBas(char[][] tab)
+{
+    for (int m = 0; m < 9; m++)//pour parcourir chacune des 9 lignes du plateauDeJeu
+    {
+        for (int n = 0; n < 7; n++)//on le fait 7 fois car cest le max pour tout decaller à gauche (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
+        {
+            for (int i = 3; i > 0; i--) //i prend les valeurs 3 2 1
+            {
+                int p = 2 * i + 1;//p prend les valeurs 7 5 3
 
+                char varB = tab[p][m];
+                char varH = tab[p - 2][m]; //p-2 prend les valeurs 5 3 1
+
+                if (varB == ' ')//si case du bas est vide
+                {
+                    if (varH != ' ')//si case du haut non vide
+                    {
+                        tab[p][m] = varH;
+                        tab[p - 2][m] = ' ';
+                    }
+                }
+            }
+        }
+    }
+}
 
 //---------------------------------------------------------------------------------------------------------------------------
 
@@ -489,36 +783,76 @@ if (directionVoulue == 'F')
 {
     FusionGoRight(plateauDeJeu);
     DecallerLesTreatsDroite(plateauDeJeu);
+    PlacerBonbonsAleatoirement(plateauDeJeu);
     AfficherLeJeu(plateauDeJeu);
 }
-
 if (directionVoulue=='S')
 {
     FusionGoLeft(plateauDeJeu);
     DecallerLesTreatsGauche(plateauDeJeu);
+    PlacerBonbonsAleatoirement(plateauDeJeu);
     AfficherLeJeu(plateauDeJeu);
 }
-
-// if (directionVoulue=='E')
-// {
-//     GoUp(plateauDeJeu);
-
-
-// }
-
-// if (directionVoulue=='D')
-// {
-//     GoDown(plateauDeJeu);
-
-
-// }
+if (directionVoulue == 'E')
+{
+    FusionGoUp(plateauDeJeu);
+    DecallerLesTreatsHaut(plateauDeJeu);
+    PlacerBonbonsAleatoirement(plateauDeJeu);
+    AfficherLeJeu(plateauDeJeu);
+}
+if (directionVoulue=='D')
+{
+    FusionGoDown(plateauDeJeu);
+    DecallerLesTreatsBas(plateauDeJeu);
+    PlacerBonbonsAleatoirement(plateauDeJeu);
+    AfficherLeJeu(plateauDeJeu);
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-/*
-puis pour toutes les lignes à gauche
-puis pour toutes les colonnes en haut
-puis pour toutes les colonnes en bas*/
+//Concernant les autres tours :
+int compteur=2 ;
+while (compteur<=nbCoupsMax)
+{
+    int coupsRestants=nbCoupsMax-compteur;
+    Console.Write("Il vous reste "+coupsRestants+" coups à jouer. Quelle direction souhaitez-vous à présent ?");
+    directionVoulue = Convert.ToChar(Console.ReadLine()!);
+
+    if (directionVoulue == 'F')
+    {
+        FusionGoRight(plateauDeJeu);
+        DecallerLesTreatsDroite(plateauDeJeu);
+        PlacerBonbonsAleatoirement(plateauDeJeu);
+        AfficherLeJeu(plateauDeJeu);
+    }
+    if (directionVoulue=='S')
+    {
+        FusionGoLeft(plateauDeJeu);
+        DecallerLesTreatsGauche(plateauDeJeu);
+        PlacerBonbonsAleatoirement(plateauDeJeu);
+        AfficherLeJeu(plateauDeJeu);
+    }
+    if (directionVoulue == 'E')
+    {
+        FusionGoUp(plateauDeJeu);
+        DecallerLesTreatsHaut(plateauDeJeu);
+        PlacerBonbonsAleatoirement(plateauDeJeu);
+        AfficherLeJeu(plateauDeJeu);
+    }
+
+    if (directionVoulue=='D')
+    {
+        FusionGoDown(plateauDeJeu);
+        DecallerLesTreatsBas(plateauDeJeu);
+        PlacerBonbonsAleatoirement(plateauDeJeu);
+        AfficherLeJeu(plateauDeJeu);
+    }
+    compteur+=1;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+
 
