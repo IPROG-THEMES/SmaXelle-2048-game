@@ -115,6 +115,7 @@ Console.WriteLine("Pour déplacer les bonbons vers le bas, veuillez entrer la le
 Console.WriteLine("Pour déplacer les bonbons vers la droite, veuillez entrer la lettre F.");
 Console.WriteLine("Pour déplacer les bonbons vers la gauche, veuillez entrer la lettre S.");
 Console.WriteLine("BONNE CHANCE!");
+System.Console.WriteLine();
 
 // ici mettre un truc pour que l'utilisateur choisisse le niveau de son jeu (tapez respectivement 1 2 3 ou 4 si vous voulez facile moyen difficile hardcore)
 //---------------------------------------------------------------------------------------------------------------------------
@@ -301,6 +302,24 @@ void FusionGoRight(char[][] tab)
                 tab[i][1] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var1!=var2 && var4==var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][5] = '@';
+                tab[i][3] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][5] = 'o';
+                tab[i][3] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][5] = 'J';
+                tab[i][3] = ' ';
+            }
+        }
     }
 }
 
@@ -445,6 +464,24 @@ void FusionGoLeft(char[][] tab)
                 tab[i][7] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var4 && var1!=var2 && var4==var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][3] = '@';
+                tab[i][5] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][3] = 'o';
+                tab[i][5] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][3] = 'J';
+                tab[i][5] = ' ';
+            }
+        }
     }
 }
 
@@ -587,6 +624,24 @@ void FusionGoUp(char[][] tab)
                 tab[7][i] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var4==var3 && var2 == var4 && var1 !=var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[5][i] = ' ';
+            }
+        }
     }
 }
 
@@ -726,6 +781,24 @@ void FusionGoDown(char[][] tab)
             {
                 tab[7][i] = 'J';
                 tab[3][i] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var2 == var1 && var4!=var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[5][i] = ' ';
             }
         }
     }
@@ -885,7 +958,7 @@ if (directionVoulue=='D')
 
 
 //Concernant les autres tours :
-int compteur=2 ;
+int compteur=1 ;
 while (compteur<=nbCoupsMax)
 {
     int coupsRestants=nbCoupsMax-compteur;
