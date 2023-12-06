@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = XmasTreats
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\esmah\OneDrive\Documents\ENSC\SmaXelle\XmasTreats\
+=======
+build_property.ProjectDir = c:\Users\Axelle\OneDrive\Documents\ENSC\info\XmasTreats\SmaXelle\XmasTreats\
+>>>>>>> main
