@@ -330,6 +330,24 @@ void FusionGoRight(char[][] tab)
                 tab[i][3] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var1!=var2 && var1 == var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][7] = '@';
+                tab[i][5] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][7] = 'o';
+                tab[i][5] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][7] = 'J';
+                tab[i][5] = ' ';
+            }
+        }
     }
 }
 
@@ -492,6 +510,24 @@ void FusionGoLeft(char[][] tab)
                 tab[i][5] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var1 && var4!=var2 && var2==var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][1] = '@';
+                tab[i][3] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][1] = 'o';
+                tab[i][3] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][1] = 'J';
+                tab[i][3] = ' ';
+            }
+        }
     }
 }
 
@@ -652,6 +688,24 @@ void FusionGoUp(char[][] tab)
                 tab[5][i] = ' ';
             }
         }
+        if ( var4 != ' ' && var1 != ' ' && var2==var3 && var2 != var4 && var1 ==var2)
+        {
+            if (var2 == '¤')
+            {
+                tab[1][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[1][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[1][i] = 'J';
+                tab[3][i] = ' ';
+            }
+        }
     }
 }
 
@@ -794,6 +848,24 @@ void FusionGoDown(char[][] tab)
             }
         }
         if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var2 == var1 && var4!=var3)
+        {
+            if (var2 == '¤')
+            {
+                tab[7][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[7][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[7][i] = 'J';
+                tab[5][i] = ' ';
+            }
+        }
+        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var2 == var4 && var1!=var3)
         {
             if (var2 == '¤')
             {
