@@ -4,14 +4,14 @@
 
 //---------------------------------------------------------------------------------------------------------------------------
 
-
 // PRESENTATION
 
-// début du jeu : affichage du plateau de jeu et du nom, comme une interface de jeu numérique
-System.Console.WriteLine("Bonjour et bienvenue sur le jeu ");
+// Début du jeu : affichage du plateau de jeu et du nom, comme une interface de jeu numérique
+System.Console.WriteLine();
+System.Console.WriteLine("Bonjour et bienvenue sur le jeu :");
 System.Console.WriteLine("**********SMAXELLE**********");
 System.Console.WriteLine("Le but du jeu est de gagner un maximum de points en assemblant les bonbons identiques ensemble.");
-System.Console.WriteLine("Votre terrain de jeu sera ce plateau : ");
+System.Console.WriteLine();
 
 
 //---------------------------------------------------------------------------------------------------------------------------
