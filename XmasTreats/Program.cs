@@ -149,6 +149,7 @@ AfficherLeJeu(plateauDeJeu);
 // nous utilisons une boucle do-while afin que les tours se suivent jusqu'à ce que la condition ne soit plus remplie
 int nbDeTours=1; // nbDeTours est une variable utilisée en tant que compteur
 bool jeuBloqué=false; // création d'une variable jeuBloqué qui nous permettra de déterminer lorsque le jeu est bloqué
+int nbDeFoisEnigme=0; // création d'un compteur afin de faire en sorte que le joueur ne puisse avoir une énigme qu'une seule fois
 
 do
 {
@@ -198,6 +199,26 @@ for (int i = 0; i < plateauDeJeu.Length; i++)
 }
 if (nbCasesVides==0) {jeuBloqué=true;} // si le compteur vaut 0, alors le plateau est plein et le jeu doit s'arrêter
 
+// mise en place d'une énigme afin de permettre au joueur de gagner 3 coups supplémentaires
+// cette énigme s'affiche si le nombre de coups maximal est atteint, pas si le plateau est bloqué
+if ((nbDeTours==nbCoupsMax) && (nbDeFoisEnigme!=1)) // on vérifie que le joueur n'a plus de coups et qu'il n'a pas déjà fait l'énigme au tour d'avant
+{
+    Console.Write("Voulez-vous tenter de répondre à une énigme afin de récupérer 3 coups? Répondez par 'oui' ou par 'non' : ");
+    string choixEnigme = Console.ReadLine()!;
+    if (choixEnigme=="oui")
+    {
+        Console.WriteLine ("Vous avez choisi de répondre à une énigme, la voici : ");
+        Console.Write("Qu'est-ce qui est jaune et qui attend ? ");
+        string reponseEnigme = Console.ReadLine()!;
+        if ((reponseEnigme == "Jonathan") || (reponseEnigme == "jonathan") || (reponseEnigme == "JONATHAN")) // on laisse deux possibilités dans le cas où le joueur oublie une majuscule 
+        {
+            Console.WriteLine("BONNE REPONSE ! Vous venez de gagner 3 coups supplémentaires ! Bravo !");
+            nbCoupsMax+=3; // le joueur peut donc jouer à nouveau 3 tours
+        }
+        else {Console.WriteLine("Mauvaise réponse, une prochaine fois !");}
+    }
+    nbDeFoisEnigme++;
+}
 
 nbDeTours++; // le compteur nbDeTours s'incrémente de 1 afin de compter le nombre de tours et de s'arrêter lorsque le maximum est atteint
 
