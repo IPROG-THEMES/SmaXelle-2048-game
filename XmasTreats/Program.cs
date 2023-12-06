@@ -976,39 +976,25 @@ do
         directionVoulue = Convert.ToChar(Console.ReadLine()!);
     }
 
-    Console.Write("Il vous reste "+coupsRestants+" coups à jouer. Quelle direction souhaitez-vous à présent ?");
-    directionVoulue = Convert.ToChar(Console.ReadLine()!);
-
-
     if (directionVoulue == 'F')
     {
         FusionGoRight(plateauDeJeu);
         DecallerLesTreatsDroite(plateauDeJeu);
-        PlacerBonbonsAleatoirement(plateauDeJeu);
-        AfficherLeJeu(plateauDeJeu);
     }
     if (directionVoulue=='S')
     {
         FusionGoLeft(plateauDeJeu);
         DecallerLesTreatsGauche(plateauDeJeu);
-        PlacerBonbonsAleatoirement(plateauDeJeu);
-        AfficherLeJeu(plateauDeJeu);
     }
     if (directionVoulue == 'E')
     {
         FusionGoUp(plateauDeJeu);
         DecallerLesTreatsHaut(plateauDeJeu);
-        PlacerBonbonsAleatoirement(plateauDeJeu);
-        AfficherLeJeu(plateauDeJeu);
     }
-
-
     if (directionVoulue=='D')
     {
         FusionGoDown(plateauDeJeu);
         DecallerLesTreatsBas(plateauDeJeu);
-        PlacerBonbonsAleatoirement(plateauDeJeu);
-        AfficherLeJeu(plateauDeJeu);
     }
 
 
