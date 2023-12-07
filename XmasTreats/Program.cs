@@ -169,7 +169,20 @@ int ChercherNbCasesVides (char[][] tab)
 void PlacerBonbonsAleatoirement (char[][] tab)
 {
     ChercherNbCasesVides (plateauDeJeu);
-     
+    
+    if (ChercherNbCasesVides(plateauDeJeu)==1)
+    {
+        Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
+        int ligne;
+        int colonne;
+        do
+        {
+            ligne = caseDuPlateau.Next(0, 9);
+            colonne = caseDuPlateau.Next(0, 9);
+        }
+        while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
+        tab[ligne][colonne]='¤';// lorsque la boucle est finie, le bonbon est attribué à la case choisie
+    }
     if (ChercherNbCasesVides(plateauDeJeu)>=2)
     {
         for (int bonbon = 1; bonbon<=2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
@@ -185,19 +198,6 @@ void PlacerBonbonsAleatoirement (char[][] tab)
             while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
             tab[ligne][colonne]='¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
         }
-    }
-    if (ChercherNbCasesVides(plateauDeJeu)==1)
-    {
-        Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
-        int ligne;
-        int colonne;
-        do
-        {
-            ligne = caseDuPlateau.Next(0, 9);
-            colonne = caseDuPlateau.Next(0, 9);
-        }
-        while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
-        tab[ligne][colonne]='¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
     }
 }
 
@@ -1043,7 +1043,7 @@ do
 
     // afin de verifier que le plateau n'est pas plein, on parcourt chaque case du plateauDeJeu, d'où le double for pour les lignes et les colonnes
     ChercherNbCasesVides (plateauDeJeu);
-    if ((ChercherNbCasesVides(plateauDeJeu)==0)||(ChercherNbCasesVides(plateauDeJeu)==1)) {jeuBloqué=true;} // si le compteur vaut 0, alors le plateau est plein et le jeu doit s'arrêter
+    if (ChercherNbCasesVides(plateauDeJeu)==0) {jeuBloqué=true;} // si le compteur vaut 0, alors le plateau est plein et le jeu doit s'arrêter
 
 
     // mise en place d'une énigme afin de permettre au joueur de gagner 3 coups supplémentaires
