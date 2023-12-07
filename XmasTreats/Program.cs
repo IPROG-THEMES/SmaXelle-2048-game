@@ -1037,7 +1037,6 @@ do
     // après l'affichage de chaque plateau, le joueur est informé du nombre de coups restants
     int nbCoupsRestants = nbCoupsMax - nbDeTours;
     Console.WriteLine ($"Il vous reste {nbCoupsRestants} coups.");
-    Console.WriteLine("");
 
     // VERIFICATION PLATEAU PLEIN
 
@@ -1068,6 +1067,16 @@ do
         nbDeFoisEnigme++;
     }
 
+    if (nbCoupsMax!=nbDeTours)
+    {
+        Console.Write("Souhaitez-vous mettre fin à la partie ? si oui, écrivez 'oui', si non, tapez sur une touche au hasard : ");
+        string souhaitFin = Console.ReadLine()!;
+        if (souhaitFin == "oui") {break;}
+    }
+
+    Console.WriteLine("");
+
+
     nbDeTours++; // le compteur nbDeTours s'incrémente de 1 afin de compter le nombre de tours et de s'arrêter lorsque le maximum est atteint
 
 } while (nbDeTours<=nbCoupsMax && jeuBloqué==false);
@@ -1083,7 +1092,8 @@ Console.WriteLine();
 // lorsque le jeu se finit, le joueur voit apparaitre la cause
 // on utilise une boucle if dans le but de différencier les deux possibilités
 if (jeuBloqué==true) {Console.WriteLine("Vous avez rempli chaque case du plateau, le jeu est bloqué et s'arrête là !");}
-else {Console.WriteLine($"Vous avez joué {nbCoupsMax} coup(s), soit le maximum de coups possibles !");}
+if (nbDeTours==nbCoupsMax) {Console.WriteLine($"Vous avez joué {nbCoupsMax} coup(s), soit le maximum de coups possibles !");}
+else {Console.WriteLine("Vous avez arrêté la partie volontairement.");}
 
 
 // CALCUL ET AFFICHAGE DU SCORE
