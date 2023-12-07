@@ -103,6 +103,7 @@ void AfficherLeJeu(char[][] tab)
 System.Console.WriteLine("Vous jouerez ainsi sur le plateau de jeu suivant : ");
 AfficherLeJeu(plateauDeJeu);
 
+
 //---------------------------------------------------------------------------------------------------------------------------
 
 
@@ -137,6 +138,29 @@ Console.WriteLine();
 //---------------------------------------------------------------------------------------------------------------------------
 
 
+// CHERCHER LE NOMBRE DE CASES VIDES
+//création d'une fonction qui pourra se répéter à chaque fin de partie
+// elle prend en argument le plateau de jeu afin de le compléter
+
+int ChercherNbCasesVides (char[][] tab)
+{
+    int nbCasesVides=0; // création de la variable nbCasesVides qui va servir de compteur et nous permettre de savoir si le plateau possède encore de l'espace
+
+    for (int i = 0; i < plateauDeJeu.Length; i++)
+    {
+        for (int j = 0; j < plateauDeJeu.Length; j++)
+        {
+            if (plateauDeJeu[i][j]==' '){nbCasesVides++;} //on regarde si la case i,j est bien vide et si c'est le cas, le compteur augmente
+        }
+    }
+
+    return nbCasesVides;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+
+
 // PLACER LES BONBONS ALEATOIREMENT
 
 //création d'une fonction qui pourra se répéter à chaque fin de partie
@@ -144,7 +168,25 @@ Console.WriteLine();
 
 void PlacerBonbonsAleatoirement (char[][] tab)
 {
-    for (int bonbon = 1; bonbon<=2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
+    ChercherNbCasesVides (plateauDeJeu);
+     
+    if (ChercherNbCasesVides(plateauDeJeu)>=2)
+    {
+        for (int bonbon = 1; bonbon<=2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
+        {
+            Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
+            int ligne;
+            int colonne;
+            do
+            {
+                ligne = caseDuPlateau.Next(0, 9);
+                colonne = caseDuPlateau.Next(0, 9);
+            }
+            while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
+            tab[ligne][colonne]='¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
+        }
+    }
+    if (ChercherNbCasesVides(plateauDeJeu)==1)
     {
         Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
         int ligne;
@@ -163,9 +205,11 @@ void PlacerBonbonsAleatoirement (char[][] tab)
 // pour cela, on appelle ainsi à nouveau PlacerBonbonsAleatoirement et AfficherLeJeu
 PlacerBonbonsAleatoirement(plateauDeJeu);
 AfficherLeJeu(plateauDeJeu);
+Console.WriteLine("");
 
 
 //---------------------------------------------------------------------------------------------------------------------------
+
 
 //CREATION DE FONCTIONS QUI SERONT APPELEES PAR LA SUITE :
 //Création des fonctions FusionGoRight, FusionGoLeft, FusionGoUp et FusionGoDown :
@@ -940,6 +984,7 @@ void DecallerLesTreatsBas(char[][] tab)
 // nous utilisons une boucle do-while afin que les tours se suivent jusqu'à ce que la condition ne soit plus remplie
 int nbDeTours=1; // nbDeTours est une variable utilisée en tant que compteur
 bool jeuBloqué=false; // création d'une variable jeuBloqué qui nous permettra de déterminer lorsque le jeu est bloqué
+int nbDeFoisEnigme=0; // création d'un compteur afin de faire en sorte que le joueur ne puisse avoir une énigme qu'une seule fois
 
 do
 {
@@ -986,27 +1031,49 @@ do
 
     // à la fin du tour, on rajoute des bonbons aléatoirement dans le plateau de jeu
     // on appelle ainsi à nouveau PlacerBonbonsAleatoirement et AfficherLeJeu
-
     PlacerBonbonsAleatoirement(plateauDeJeu);
     AfficherLeJeu(plateauDeJeu);
+
+    // après l'affichage de chaque plateau, le joueur est informé du nombre de coups restants
+    int nbCoupsRestants = nbCoupsMax - nbDeTours;
+    Console.WriteLine ($"Il vous reste {nbCoupsRestants} coups.");
+    Console.WriteLine("");
 
     // VERIFICATION PLATEAU PLEIN
 
     // afin de verifier que le plateau n'est pas plein, on parcourt chaque case du plateauDeJeu, d'où le double for pour les lignes et les colonnes
-    int nbCasesVides=0; // création de la variable nbCasesVides qui va servir de compteur et nous permettre de savoir si le plateau possède encore de l'espace
-    for (int i = 0; i < plateauDeJeu.Length; i++)
-    {
-        for (int j = 0; j < plateauDeJeu.Length; j++)
-        {
-            if (plateauDeJeu[i][j]==' '){nbCasesVides++;} //on regarde si la case i,j est bien vide et si c'est le cas, le compteur augmente
-        }
-    }
-    if (nbCasesVides==0) {jeuBloqué=true;} // si le compteur vaut 0, alors le plateau est plein et le jeu doit s'arrêter
+    ChercherNbCasesVides (plateauDeJeu);
+    if ((ChercherNbCasesVides(plateauDeJeu)==0)||(ChercherNbCasesVides(plateauDeJeu)==1)) {jeuBloqué=true;} // si le compteur vaut 0, alors le plateau est plein et le jeu doit s'arrêter
 
+
+    // mise en place d'une énigme afin de permettre au joueur de gagner 3 coups supplémentaires
+    // cette énigme s'affiche si le nombre de coups maximal est atteint, pas si le plateau est bloqué
+    if ((nbDeTours==nbCoupsMax) && (nbDeFoisEnigme!=1)) // on vérifie que le joueur n'a plus de coups et qu'il n'a pas déjà fait l'énigme au tour d'avant
+    {
+        Console.WriteLine($"Vous avez déjà atteint vos {nbCoupsMax} coups!");
+        Console.Write("Voulez-vous tenter de répondre à une énigme afin de récupérer 3 coups? Répondez par 'oui' ou par 'non' : ");
+        string choixEnigme = Console.ReadLine()!;
+        if (choixEnigme=="oui")
+        {
+            Console.WriteLine ("Vous avez choisi de répondre à une énigme, la voici : ");
+            Console.Write("Qu'est-ce qui est jaune et qui attend ? ");
+            string reponseEnigme = Console.ReadLine()!;
+            if ((reponseEnigme == "Jonathan") || (reponseEnigme == "jonathan") || (reponseEnigme == "JONATHAN")) // on laisse deux possibilités dans le cas où le joueur oublie une majuscule 
+            {
+                Console.WriteLine("BONNE REPONSE ! Vous venez de gagner 3 coups supplémentaires ! Bravo !");
+                nbCoupsMax+=3; // le joueur peut donc jouer à nouveau 3 tours
+            }
+            else {Console.WriteLine("Mauvaise réponse, une prochaine fois !");}
+        }
+        nbDeFoisEnigme++;
+    }
 
     nbDeTours++; // le compteur nbDeTours s'incrémente de 1 afin de compter le nombre de tours et de s'arrêter lorsque le maximum est atteint
 
 } while (nbDeTours<=nbCoupsMax && jeuBloqué==false);
+
+
+//---------------------------------------------------------------------------------------------------------------------------
 
 
 // CAUSE FIN DU JEU

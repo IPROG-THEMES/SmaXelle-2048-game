@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\esmah\\.nuget\\packages\\": {}
+    "C:\\Users\\Axelle\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esmah\\OneDrive\\Documents\\ENSC\\SmaXelle\\XmasTreats\\XmasTreats.csproj",
+      "projectUniqueName": "C:\\Users\\Axelle\\OneDrive\\Documents\\ENSC\\info\\XmasTreats\\SmaXelle\\XmasTreats\\XmasTreats.csproj",
       "projectName": "XmasTreats",
-      "projectPath": "C:\\Users\\esmah\\OneDrive\\Documents\\ENSC\\SmaXelle\\XmasTreats\\XmasTreats.csproj",
-      "packagesPath": "C:\\Users\\esmah\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esmah\\OneDrive\\Documents\\ENSC\\SmaXelle\\XmasTreats\\obj\\",
+      "projectPath": "C:\\Users\\Axelle\\OneDrive\\Documents\\ENSC\\info\\XmasTreats\\SmaXelle\\XmasTreats\\XmasTreats.csproj",
+      "packagesPath": "C:\\Users\\Axelle\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Axelle\\OneDrive\\Documents\\ENSC\\info\\XmasTreats\\SmaXelle\\XmasTreats\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\esmah\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Axelle\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
