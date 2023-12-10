@@ -51,7 +51,7 @@ for (int m = 0; m < 8; m++)
     plateauDeJeu[0][m] = '-';
     plateauDeJeu[8][m] = '-';
 }
-
+//remplissage du reste des '-' nécessaires au plateu de jeu :
 for (int n = 0; n < 4; n++)//n prend les valeurs 0, 1, 2 et 3
 {
     //2*n+1 prendra ainsi les valeurs 1, 3, 5 et 7
@@ -61,7 +61,7 @@ for (int n = 0; n < 4; n++)//n prend les valeurs 0, 1, 2 et 3
     }
 }
 
-//Remplissage de '.' (pour les quatres sommets du grand carré)
+//Remplissage des '.' (pour les quatres sommets du grand carré)
 plateauDeJeu[0][0] = '.';
 plateauDeJeu[0][8] = '.';
 plateauDeJeu[8][0] = '.';
@@ -170,40 +170,39 @@ AfficherLeJeu(plateauDeJeu);
 //CREATION DE FONCTIONS QUI SERONT APPELEES PAR LA SUITE :
 //Création des fonctions FusionGoRight, FusionGoLeft, FusionGoUp et FusionGoDown :
 
-//1.FusionGoRight : fonction qui permet de fusionner deux éléments identiques et de mettre l'élément résultant de la fusion sur la droite (pour toutes les lignes)
+//1.FusionGoRight : fonction qui permet de fusionner deux éléments identiques et de mettre l'élément résultant de la fusion dans la case la plus à droite entre les deux cases évaluées (pour toutes les lignes)
 void FusionGoRight(char[][] tab)
 {
-    for (int j = 0; j < 4; j++)//i permet de passer sur chaque ligne du tableau, et ainsi de trier toutes les lignes
+    for (int j = 0; j < 4; j++)//j permet de parcourir chaque ligne du tableau
     {
-        int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases)
-        //stockage des valeurs de chacune des cases de jeu de la première ligne, avec var1 celle la + à droite, et var4 celle la + à gauche
+        int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases), ce qui permet au programme de ne pas tester des cases 'inutilement'
+        //stockage des valeurs de chacune des cases de jeu de chacune des lignes, avec var1 celle la plus à droite, et var4 celle la plus à gauche
         char var1 = tab[i][7];
         char var2 = tab[i][5];
         char var3 = tab[i][3];
         char var4 = tab[i][1];
 
-        if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2cases les + à droite, et on est sûr de ne pas avoir de vide dans ces deux cases là
+        if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2 cases les plus à droite, et on est sûr de ne pas avoir de vide dans ces deux cases là
         {
-            //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à droite entre les deux cases évaluées
+            //fusionnage des treats, et on met le résultat de la fusion dans la case la plus à droite entre les deux cases évaluées
             if (var1 == '¤')
             {
-                tab[i][7] = '@';
-                tab[i][5] = ' ';
+                tab[i][7] = '@';//on met le résultat de la fusion dans la case de droite
+                tab[i][5] = ' ';//on vide la case de gauche
             }
             if (var1 == '@')
             {
-                tab[i][7] = 'o';
-                tab[i][5] = ' ';
+                tab[i][7] = 'o';//on met le résultat de la fusion dans la case de droite
+                tab[i][5] = ' ';//on vide la case de gauche
             }
             if (var1 == 'o')
             {
-                tab[i][7] = 'J';
-                tab[i][5] = ' ';
+                tab[i][7] = 'J';//on met le résultat de la fusion dans la case de droite
+                tab[i][5] = ' ';//on vide la case de gauche
             }
-
         }
         //idem maintenant pour le reste des cas possibles :
-        if (var2 != ' ' && var3 == var2)
+        else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
             {
@@ -240,7 +239,7 @@ void FusionGoRight(char[][] tab)
                 tab[i][1] = ' ';
             }
         }
-        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        else if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
         {
             if (var1 == '¤')
             {
@@ -258,12 +257,13 @@ void FusionGoRight(char[][] tab)
                 tab[i][1] = ' ';
             }
         }
-        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)//On met un 'else if' ici puisqu'on veut que la condition soit true ssi les conditions précédentes étaient toutes fausses. 
+        //En effet, on veut que cette partie du code ne concerne que le cas où il y a deux treats dès le début à fusionner, mais qui ne résultent pas d'une fusion due à l'un des 'if' précédents.
         {
             if (var3 == '¤')
             {
                 tab[i][7] = '@';
-                tab[i][3] = ' ';
+                tab[i][3] = ' '; 
             }
             if (var3 == '@')
             {
@@ -276,7 +276,7 @@ void FusionGoRight(char[][] tab)
                 tab[i][3] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
         {
             if (var2 == '¤')
             {
@@ -294,6 +294,7 @@ void FusionGoRight(char[][] tab)
                 tab[i][1] = ' ';
             }
         }
+        //blablabla
         if ( var4 != ' ' && var1 != ' ' && var3 == ' ' && var2 == var4 && var1!=var2)
         {
             if (var2 == '¤')
@@ -310,42 +311,6 @@ void FusionGoRight(char[][] tab)
             {
                 tab[i][5] = 'J';
                 tab[i][1] = ' ';
-            }
-        }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var1!=var2 && var4==var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[i][5] = '@';
-                tab[i][3] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[i][5] = 'o';
-                tab[i][3] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[i][5] = 'J';
-                tab[i][3] = ' ';
-            }
-        }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var1!=var2 && var1 == var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[i][7] = '@';
-                tab[i][5] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[i][7] = 'o';
-                tab[i][5] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[i][7] = 'J';
-                tab[i][5] = ' ';
             }
         }
     }
@@ -384,7 +349,7 @@ void FusionGoLeft(char[][] tab)
             }
         }
 
-        if (var2 != ' ' && var3 == var2)
+        else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
             {
@@ -420,7 +385,7 @@ void FusionGoLeft(char[][] tab)
                 tab[i][7] = ' ';
             }
         }
-        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        else if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
         {
             if (var1 == '¤')
             {
@@ -438,7 +403,7 @@ void FusionGoLeft(char[][] tab)
                 tab[i][7] = ' ';
             }
         }
-        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
         {
             if (var3 == '¤')
             {
@@ -456,7 +421,7 @@ void FusionGoLeft(char[][] tab)
                 tab[i][5] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
         {
             if (var2 == '¤')
             {
@@ -492,42 +457,7 @@ void FusionGoLeft(char[][] tab)
                 tab[i][7] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var4 && var1!=var2 && var4==var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[i][3] = '@';
-                tab[i][5] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[i][3] = 'o';
-                tab[i][5] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[i][3] = 'J';
-                tab[i][5] = ' ';
-            }
-        }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var1 && var4!=var2 && var2==var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[i][1] = '@';
-                tab[i][3] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[i][1] = 'o';
-                tab[i][3] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[i][1] = 'J';
-                tab[i][3] = ' ';
-            }
-        }
+        
     }
 }
 
@@ -562,7 +492,7 @@ void FusionGoUp(char[][] tab)
                 tab[3][i] = ' ';
             }
         }
-        if (var2 != ' ' && var3 == var2)
+        else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
             {
@@ -598,7 +528,7 @@ void FusionGoUp(char[][] tab)
                 tab[7][i] = ' ';
             }
         }
-        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        else if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
         {
             if (var1 == '¤')
             {
@@ -616,7 +546,7 @@ void FusionGoUp(char[][] tab)
                 tab[7][i]= ' ';
             }
         }
-        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
         {
             if (var3 == '¤')
             {
@@ -634,7 +564,7 @@ void FusionGoUp(char[][] tab)
                 tab[5][i] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
         {
             if (var2 == '¤')
             {
@@ -670,42 +600,6 @@ void FusionGoUp(char[][] tab)
                 tab[7][i] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 != ' ' && var4==var3 && var2 == var4 && var1 !=var2)
-        {
-            if (var2 == '¤')
-            {
-                tab[3][i] = '@';
-                tab[5][i] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[3][i] = 'o';
-                tab[5][i] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[3][i] = 'J';
-                tab[5][i] = ' ';
-            }
-        }
-        if ( var4 != ' ' && var1 != ' ' && var2==var3 && var2 != var4 && var1 ==var2)
-        {
-            if (var2 == '¤')
-            {
-                tab[1][i] = '@';
-                tab[3][i] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[1][i] = 'o';
-                tab[3][i] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[1][i] = 'J';
-                tab[3][i] = ' ';
-            }
-        }
     }
 }
 
@@ -739,7 +633,7 @@ void FusionGoDown(char[][] tab)
                 tab[1][i] = ' ';
             }
         }
-        if (var2 != ' ' && var3 == var2)
+        else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
             {
@@ -775,7 +669,7 @@ void FusionGoDown(char[][] tab)
                 tab[5][i] = ' ';
             }
         }
-        if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
+        else if (var4 != ' ' && var2 == ' ' && var3 == ' ' && var1 == var4)
         {
             if (var1 == '¤')
             {
@@ -793,7 +687,7 @@ void FusionGoDown(char[][] tab)
                 tab[1][i]= ' ';
             }
         }
-        if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
         {
             if (var3 == '¤')
             {
@@ -811,7 +705,7 @@ void FusionGoDown(char[][] tab)
                 tab[1][i] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
+        else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
         {
             if (var2 == '¤')
             {
@@ -847,42 +741,6 @@ void FusionGoDown(char[][] tab)
                 tab[3][i] = ' ';
             }
         }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var2 == var1 && var4!=var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[7][i] = '@';
-                tab[5][i] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[7][i] = 'o';
-                tab[5][i] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[7][i] = 'J';
-                tab[5][i] = ' ';
-            }
-        }
-        if ( var4 != ' ' && var1 != ' ' && var2 == var3 && var2 == var4 && var1!=var3)
-        {
-            if (var2 == '¤')
-            {
-                tab[7][i] = '@';
-                tab[5][i] = ' ';
-            }
-            if (var2 == '@')
-            {
-                tab[7][i] = 'o';
-                tab[5][i] = ' ';
-            }
-            if (var2 == 'o')
-            {
-                tab[7][i] = 'J';
-                tab[5][i] = ' ';
-            }
-        }
     }
 }
 
@@ -890,7 +748,7 @@ void FusionGoDown(char[][] tab)
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-//Ensuite, on s'occupe de décaller au max les bonbons vers la droite, vers la gauche, le haut ou le bas, selon la touche préssée par l'utilisateur, en comblant les blancs, mais en ne fusionnant rien du tout.
+//Ensuite, on s'occupe de décaller au max les bonbons vers la droite, vers la gauche, le haut ou le bas, selon la touche pressée par l'utilisateur, en comblant les blancs, mais en ne fusionnant rien du tout.
 //Les fonctions s'appeleront : DecallerLesTreatsDroite, DecallerLesTreatsGauche, DecallerLesTreatsHaut et enfin, DecallerLesTreatsBas.
 
 //1.DecallerLesTreatsDroite :
