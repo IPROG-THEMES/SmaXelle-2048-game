@@ -225,7 +225,7 @@ void FusionGoRight(char[][] tab)
         char var2 = tab[i][5];
         char var3 = tab[i][3];
         char var4 = tab[i][1];
-
+        //#1
         if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2 cases les plus à droite, et on est sûr de ne pas avoir de vide dans ces deux cases là
         {
             //fusionnage des treats, et on met le résultat de la fusion dans la case la plus à droite entre les deux cases évaluées
@@ -243,6 +243,25 @@ void FusionGoRight(char[][] tab)
             {
                 tab[i][7] = 'J';//on met le résultat de la fusion dans la case de droite
                 tab[i][5] = ' ';//on vide la case de gauche
+            }
+        }
+        //#2
+        if (var1!=' ' && var1!=var2 && var2!=' ' && var2==var3 && var3==var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][5] = '@';
+                tab[i][3] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][5] = 'o';
+                tab[i][3] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][5] = 'J';
+                tab[i][3] = ' ';
             }
         }
         //idem maintenant pour le reste des cas possibles :
@@ -392,7 +411,24 @@ void FusionGoLeft(char[][] tab)
                 tab[i][3] = ' ';
             }
         }
-
+        if (var1!=' ' && var1!= var2 && var2 !=' ' && var2==var3 && var3==var4)
+        {
+            if (var2 == '¤')
+            {
+                tab[i][3] = '@';
+                tab[i][5] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[i][3] = 'o';
+                tab[i][5] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[i][3] = 'J';
+                tab[i][5] = ' ';
+            }
+        }
         else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
@@ -536,6 +572,24 @@ void FusionGoUp(char[][] tab)
                 tab[3][i] = ' ';
             }
         }
+        if (var1!=' ' && var1!=var2 && var2!= ' ' && var2==var3 && var3==var4)
+        {
+             if (var2 == '¤')
+            {
+                tab[3][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[3][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[3][i] = 'J';
+                tab[5][i]= ' ';
+            }
+        }
         else if (var2 != ' ' && var3 == var2)
         {
             if (var2 == '¤')
@@ -648,7 +702,7 @@ void FusionGoUp(char[][] tab)
 }
 
 //4.FusionGoDown
-void FusionGoDown(char[][] tab)
+void FusionGoDown(char[][] tab)  
 {
     for (int j = 0; j < 4; j++)
     {
@@ -675,6 +729,24 @@ void FusionGoDown(char[][] tab)
             {
                 tab[3][i] = 'J';
                 tab[1][i] = ' ';
+            }
+        }
+        if (var4!=' ' && var4!=var3 && var3!= ' '&& var3==var2 && var2==var1)
+        {
+            if (var2 == '¤')
+            {
+                tab[5][i] = '@';
+                tab[3][i] = ' ';
+            }
+            if (var2 == '@')
+            {
+                tab[5][i] = 'o';
+                tab[3][i] = ' ';
+            }
+            if (var2 == 'o')
+            {
+                tab[5][i] = 'J';
+                tab[3][i]= ' ';
             }
         }
         else if (var2 != ' ' && var3 == var2)
@@ -1047,5 +1119,3 @@ Console.WriteLine("*************************************************************
 Console.WriteLine();
 
 
-
-//test modification
