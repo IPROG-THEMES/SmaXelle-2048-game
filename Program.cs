@@ -329,6 +329,25 @@ void FusionGoRight(char[][] tab)
             }
 
         }
+        //#6
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[i][7] = '@';
+                tab[i][3] = ' '; 
+            }
+            if (var3 == '@')
+            {
+                tab[i][7] = 'o';
+                tab[i][3] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[i][7] = 'J';
+                tab[i][3] = ' ';
+            }
+        }
         //#4
         else if (var4 != ' ' && var3 == var4)
         {
@@ -365,26 +384,6 @@ void FusionGoRight(char[][] tab)
             {
                 tab[i][7] = 'J';
                 tab[i][1] = ' ';
-            }
-        }
-        //#6
-        else if (var1 != ' ' && var2 == ' ' && var3 == var1)//On met un 'else if' ici puisqu'on veut que la condition soit true ssi les conditions précédentes étaient toutes fausses. 
-        //En effet, on veut que cette partie du code ne concerne que le cas où il y a deux treats dès le début à fusionner, mais qui ne résultent pas d'une fusion due à l'un des 'if' précédents.
-        {
-            if (var3 == '¤')
-            {
-                tab[i][7] = '@';
-                tab[i][3] = ' '; 
-            }
-            if (var3 == '@')
-            {
-                tab[i][7] = 'o';
-                tab[i][3] = ' ';
-            }
-            if (var3 == 'o')
-            {
-                tab[i][7] = 'J';
-                tab[i][3] = ' ';
             }
         }
         //#7
@@ -538,6 +537,24 @@ void FusionGoLeft(char[][] tab)
                 tab[i][5] = ' ';
             }
         }
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[i][1] = '@';
+                tab[i][5] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[i][1] = 'o';
+                tab[i][5] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[i][1] = 'J';
+                tab[i][5] = ' ';
+            }
+        }
         else if (var4 != ' ' && var3 == var4)
         {
             if (var3 == '¤')
@@ -572,24 +589,6 @@ void FusionGoLeft(char[][] tab)
             {
                 tab[i][1] = 'J';
                 tab[i][7] = ' ';
-            }
-        }
-        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
-        {
-            if (var3 == '¤')
-            {
-                tab[i][1] = '@';
-                tab[i][5] = ' ';
-            }
-            if (var3 == '@')
-            {
-                tab[i][1] = 'o';
-                tab[i][5] = ' ';
-            }
-            if (var3 == 'o')
-            {
-                tab[i][1] = 'J';
-                tab[i][5] = ' ';
             }
         }
         else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
@@ -741,6 +740,24 @@ void FusionGoUp(char[][] tab)
                 tab[5][i]= ' ';
             }
         }
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[1][i] = '@';
+                tab[5][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[1][i] = 'o';
+                tab[5][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[1][i] = 'J';
+                tab[5][i] = ' ';
+            }
+        }
         else if (var4 != ' ' && var3 == var4)
         {
             if (var3 == '¤')
@@ -775,24 +792,6 @@ void FusionGoUp(char[][] tab)
             {
                 tab[1][i] = 'J';
                 tab[7][i]= ' ';
-            }
-        }
-        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
-        {
-            if (var3 == '¤')
-            {
-                tab[1][i] = '@';
-                tab[5][i] = ' ';
-            }
-            if (var3 == '@')
-            {
-                tab[1][i] = 'o';
-                tab[5][i] = ' ';
-            }
-            if (var3 == 'o')
-            {
-                tab[1][i] = 'J';
-                tab[5][i] = ' ';
             }
         }
         else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
@@ -942,6 +941,24 @@ void FusionGoDown(char[][] tab)
                 tab[3][i]= ' ';
             }
         }
+        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
+        {
+            if (var3 == '¤')
+            {
+                tab[5][i] = '@';
+                tab[1][i] = ' ';
+            }
+            if (var3 == '@')
+            {
+                tab[5][i] = 'o';
+                tab[1][i] = ' ';
+            }
+            if (var3 == 'o')
+            {
+                tab[5][i] = 'J';
+                tab[1][i] = ' ';
+            }
+        }
         else if (var4 != ' ' && var3 == var4)
         {
             if (var3 == '¤')
@@ -976,24 +993,6 @@ void FusionGoDown(char[][] tab)
             {
                 tab[7][i] = 'J';
                 tab[1][i]= ' ';
-            }
-        }
-        else if (var1 != ' ' && var2 == ' ' && var3 == var1)
-        {
-            if (var3 == '¤')
-            {
-                tab[5][i] = '@';
-                tab[1][i] = ' ';
-            }
-            if (var3 == '@')
-            {
-                tab[5][i] = 'o';
-                tab[1][i] = ' ';
-            }
-            if (var3 == 'o')
-            {
-                tab[5][i] = 'J';
-                tab[1][i] = ' ';
             }
         }
         else if ( var4 != ' ' && var1 == ' ' && var3 == ' ' && var2 == var4)
