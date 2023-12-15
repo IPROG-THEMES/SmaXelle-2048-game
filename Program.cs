@@ -1136,12 +1136,12 @@ void DecallerLesTreatsBas(char[][] tab)
     {
         for (int n = 0; n < 7; n++)//on le fait 7 fois car cest le max pour tout decaller à gauche (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
         {
-            for (int i = 3; i > 0; i--) //i prend les valeurs 3 2 1
+            for (int i = 3; i > 0; i--) //i prend les valeurs 3, 2 et 1
             {
-                int p = 2 * i + 1;//p prend les valeurs 7 5 3
+                int p = 2 * i + 1;//p prend les valeurs 7, 5 et 3
 
                 char varB = tab[p][m];
-                char varH = tab[p - 2][m]; //p-2 prend les valeurs 5 3 1
+                char varH = tab[p - 2][m]; //p-2 prend les valeurs 5, 3 et 1
 
                 if (varB == ' ')//si case du bas est vide
                 {
@@ -1176,7 +1176,7 @@ do
     // création d'une variable directionVoulue
     char directionVoulue;
     // demander au joueur de choisir une direction
-    // utilisation de ESDF pour que chaque forme d'ordinateur s'y retrouve
+    // utilisation des touches 'E', 'S', 'D', 'F' pour que chaque forme d'ordinateur s'y retrouve
     Console.Write("Choisissez une direction (E vers le haut, D vers le bas, S vers la gauche, F vers la droite) : ");
     directionVoulue = Convert.ToChar(Console.ReadLine()!);
 
@@ -1260,7 +1260,7 @@ do
     Console.WriteLine("");
 
 
-    nbDeTours++; // le compteur nbDeTours s'incrémente de 1 afin de compter le nombre de tours et de s'arrêter lorsque le maximum est atteint
+    nbDeTours++; // Le compteur nbDeTours s'incrémente de 1 afin de compter le nombre de tours et de s'arrêter lorsque le maximum est atteint.
 
 } while (nbDeTours<=nbCoupsMax && jeuBloqué==false);
 
@@ -1269,18 +1269,24 @@ do
 
 
 // CAUSE FIN DU JEU
+
 Console.WriteLine();
 Console.WriteLine("FIN DE LA PARTIE");
 Console.WriteLine();
-// lorsque le jeu se finit, le joueur voit apparaitre la cause
-// on utilise une boucle if dans le but de différencier les deux possibilités
+
+// Lorsque le jeu se finit, le joueur voit apparaitre la cause.
+// On utilise une boucle if dans le but de différencier les deux possibilités.
 if (jeuBloqué==true) {Console.WriteLine("Vous avez rempli chaque case du plateau, le jeu est bloqué et s'arrête là !");}
 if (nbDeTours==nbCoupsMax) {Console.WriteLine($"Vous avez joué {nbCoupsMax} coup(s), soit le maximum de coups possibles !");}
 else {Console.WriteLine("Vous avez arrêté la partie volontairement.");}
 
 
+//---------------------------------------------------------------------------------------------------------------------------
+
+
 // CALCUL ET AFFICHAGE DU SCORE
-// le score est calculé à la fin de la partie. Le programme parcourt chaque case du tableau est somme les valeurs de chaque bonbon présent
+
+// Le score est calculé à la fin de la partie. Le programme parcourt chaque case du tableau est somme les valeurs de chaque bonbon présent.
 int scoreFinal=0; // création de la variable nbCasesVides qui va servir de compteur et nous permettre de savoir si le plateau possède encore de l'espace
 for (int i = 0; i < plateauDeJeu.Length; i++)
 {
@@ -1299,4 +1305,4 @@ Console.WriteLine($"Vous obtenez un superbe score de {scoreFinal} points! Félic
 Console.WriteLine("*********************************************************************");
 Console.WriteLine();
 
-
+//---------------------------------------------------------------------------------------------------------------------------
