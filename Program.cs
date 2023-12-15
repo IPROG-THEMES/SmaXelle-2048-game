@@ -1,4 +1,4 @@
-﻿// JEU SMAXELLE
+﻿// JEU SmaXelle
 //AGEZ Axelle & HEBBAR Esma
 
 
@@ -6,7 +6,7 @@
 
 // PRESENTATION
 
-// Début du jeu : affichage du plateau de jeu et du nom, comme une interface de jeu numérique
+// Début du jeu : affichage du plateau de jeu et du nom, comme une interface de jeu numérique.
 System.Console.WriteLine();
 System.Console.WriteLine("Bonjour et bienvenue sur le jeu :");
 System.Console.WriteLine("**********SMAXELLE**********");
@@ -19,21 +19,22 @@ System.Console.WriteLine();
 
 //CREATION DE plateauDeJeu :
 
-//Création d'un tableau imbriqué de char qui s'appelle plateauDeJeu de 9 lignes et de ? colonnes
+//Création d'un tableau imbriqué de char qui s'appelle 'plateauDeJeu', de 9 lignes et de ? colonnes.
 char[][] plateauDeJeu = new char[9][];
 
-//Création des 9 colonnes pour chacune des 9 lignes 
-for (int i = 0; i < 9; i++)//i se balade dans les lignes du plateauDeJeu
+//Création des 9 colonnes pour chacune des 9 lignes
+for (int i = 0; i < 9; i++)//i permet de se balader dans les lignes de plateauDeJeu
 {
-    plateauDeJeu[i] = new char[9];//dans chaque ligne, on y met 9 colonnes
+    plateauDeJeu[i] = new char[9];//Dans chaque ligne, on y met 9 colonnes
 }
-//On a ainsi un plateau de jeu de 16 cases de jeu, et la totalité du reste des cases permet de dessiner les délimitations.
+//On a ainsi un plateau de jeu de 16 cases de jeu dans lesquelles les tretas apparaissent, et le reste des cases permet de dessiner les délimitations.
 
 
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-//REMPLISSAGE DU plateauDeJeu
+//REMPLISSAGE DE plateauDeJeu
+//Pour davantage de détails, voir le schéma du plateau de jeu joint dans les justifications techniques.
 
 //Remplissage de '|' :
 for (int k = 0; k < 8; k++)
@@ -51,7 +52,7 @@ for (int m = 0; m < 8; m++)
     plateauDeJeu[0][m] = '-';
     plateauDeJeu[8][m] = '-';
 }
-//remplissage du reste des '-' nécessaires au plateu de jeu :
+//Pui, remplissage du reste des '-' nécessaires au plateu de jeu :
 for (int n = 0; n < 4; n++)//n prend les valeurs 0, 1, 2 et 3
 {
     //2*n+1 prendra ainsi les valeurs 1, 3, 5 et 7
@@ -84,16 +85,16 @@ for (int ligne = 0; ligne < 9; ligne++)//la variable ligne se balade dans les li
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-// FONCTION AFFICHERLEJEU
+// FONCTION 'AfficherLeJeu'
 
-//création du sous-programme AfficherLeJeu qui nous permettra, lorsqu'il sera appelé, d'afficher la totalité du plateau de jeu
+//Création du sous-programme AfficherLeJeu qui nous permettra, lorsqu'il sera appelé, d'afficher la totalité du plateau de jeu.
 void AfficherLeJeu(char[][] tab)
 {
     for (int ligne = 0; ligne < tab.Length; ligne++)
     {
         for (int colonne = 0; colonne < tab[ligne].Length; colonne++)
         {
-            Console.Write(tab[ligne][colonne] + " ");
+            Console.Write(tab[ligne][colonne] + " ");//L'espace ajouté (" ") permettra d'augmenter en lisibilité 
         }
         Console.WriteLine(); //Pour passer à la ligne suivante après chaque ligne.
     }
@@ -109,12 +110,12 @@ AfficherLeJeu(plateauDeJeu);
 
 // NOMBRE DE COUPS
 
-//on demande au joueur le nombre de coups maximum qu'il autorise :
+//On demande au joueur le nombre de coups maximum qu'il autorise :
 int nbCoupsMax;
 Console.Write("Veuillez entrer le nombre de coups maximum : ");
 nbCoupsMax = Convert.ToInt32(Console.ReadLine()!);
 
-// on affiche à nouveau le nombre de coups
+// On affiche à nouveau le nombre de coups, afin de confirmer à l'utilisateur que sa demande a bien été prise en compte :
 Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
 
 
@@ -123,7 +124,7 @@ Console.WriteLine($"Vous avez choisi {nbCoupsMax} coups.");
 
 // DEBUT DU JEU ET CONSIGNES
 
-//on dit au joueur que le jeu va commencer et on lui explique les règles
+//On annonce au joueur que le jeu va commencer, et on lui explique les règles.
 Console.WriteLine();
 Console.WriteLine("Le jeu va dès à présent débuter.");
 Console.WriteLine($"Vous allez devoir assembler les bonbons de même forme afin d'obtenir un maximum de points en seulement {nbCoupsMax} coups!");
@@ -139,18 +140,18 @@ Console.WriteLine();
 
 
 // CHERCHER LE NOMBRE DE CASES VIDES
-//création d'une fonction qui pourra se répéter à chaque fin de partie
-// elle prend en argument le plateau de jeu afin de le compléter
+//Création d'une fonction qui pourra se répéter à chaque fin de partie
+//Elle prend en argument le plateau de jeu afin de le compléter
 
 int ChercherNbCasesVides (char[][] tab)
 {
-    int nbCasesVides=0; // création de la variable nbCasesVides qui va servir de compteur et nous permettre de savoir si le plateau possède encore de l'espace
+    int nbCasesVides=0; // création de la variable nbCasesVides qui va servir de compteur et nous permettre de savoir si le plateau possède encore de l'espace ou non
 
     for (int i = 0; i < plateauDeJeu.Length; i++)
     {
         for (int j = 0; j < plateauDeJeu.Length; j++)
         {
-            if (plateauDeJeu[i][j]==' '){nbCasesVides++;} //on regarde si la case i,j est bien vide et si c'est le cas, le compteur augmente
+            if (plateauDeJeu[i][j]==' '){nbCasesVides++;} //on regarde si la case i,j est bien vide, et si c'est le cas, le compteur augmente
         }
     }
 
@@ -163,8 +164,8 @@ int ChercherNbCasesVides (char[][] tab)
 
 // PLACER LES BONBONS ALEATOIREMENT
 
-//création d'une fonction qui pourra se répéter à chaque fin de partie
-//la fonction prend en argument le plateau de jeu afin de le compléter
+//Création d'une fonction qui pourra se répéter à chaque fin de partie
+//La fonction prend en argument le plateau de jeu afin de le compléter
 
 void PlacerBonbonsAleatoirement (char[][] tab)
 {
@@ -172,22 +173,23 @@ void PlacerBonbonsAleatoirement (char[][] tab)
     
     if (ChercherNbCasesVides(plateauDeJeu)==1)
     {
-        Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
+        Random caseDuPlateau = new Random(); // Utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
         int ligne;
         int colonne;
+
         do
         {
             ligne = caseDuPlateau.Next(0, 9);
             colonne = caseDuPlateau.Next(0, 9);
         }
-        while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
-        tab[ligne][colonne]='¤';// lorsque la boucle est finie, le bonbon est attribué à la case choisie
+        while (tab[ligne][colonne]!=' '); // La boucle do-while continue tant que la case choisie n'est pas vide, peu importe le char qu'elle comporte
+        tab[ligne][colonne]='¤';// Lorsque la boucle est finie, le bonbon est attribué à la case choisie.
     }
     if (ChercherNbCasesVides(plateauDeJeu)>=2)
     {
-        for (int bonbon = 1; bonbon<=2; bonbon++) // utilisation d'une boucle afin de répéter l'opération deux fois
+        for (int bonbon = 1; bonbon<=2; bonbon++) // Utilisation d'une boucle afin de répéter l'opération deux fois
         {
-            Random caseDuPlateau = new Random(); // utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
+            Random caseDuPlateau = new Random(); // Utilisation d'un tirage pour déterminer une ligne et une colonne aléatoirement
             int ligne;
             int colonne;
             do
@@ -195,14 +197,15 @@ void PlacerBonbonsAleatoirement (char[][] tab)
                 ligne = caseDuPlateau.Next(0, 9);
                 colonne = caseDuPlateau.Next(0, 9);
             }
-            while (tab[ligne][colonne]!=' '); // la boucle do-while continue tant que la case choisie n'est pas vide, peu importe le bonbon qu'elle comporte
-            tab[ligne][colonne]='¤';// lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
+            while (tab[ligne][colonne]!=' '); // La boucle do-while continue tant que la case choisie n'est pas vide, peu importe le char qu'elle comporte
+            tab[ligne][colonne]='¤';// Lorsque la boucle est finie, le premier bonbon est attribué à la case choisie
         }
     }
 }
 
-// on affiche à nouveau le plateau afin que le joueur puisse reconnaitre les nouveaux bonbons
-// pour cela, on appelle ainsi à nouveau PlacerBonbonsAleatoirement et AfficherLeJeu
+// On affiche à nouveau le plateau afin que le joueur puisse reconnaitre les nouveaux bonbons
+// Pour cela, on appelle ainsi à nouveau 'PlacerBonbonsAleatoirement' et 'AfficherLeJeu' :
+
 PlacerBonbonsAleatoirement(plateauDeJeu);
 AfficherLeJeu(plateauDeJeu);
 Console.WriteLine("");
@@ -217,14 +220,15 @@ Console.WriteLine("");
 //1.FusionGoRight : fonction qui permet de fusionner deux éléments identiques et de mettre l'élément résultant de la fusion dans la case la plus à droite entre les deux cases évaluées (pour toutes les lignes)
 void FusionGoRight(char[][] tab)
 {
-    for (int j = 0; j < 4; j++)//j permet de parcourir chaque ligne du tableau
+    for (int j = 0; j < 4; j++)//j permet de parcourir chacune des lignes du tableau, même celles correspondant aux délimitations des cases.
     {
         int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases), ce qui permet au programme de ne pas tester des cases 'inutilement'
-        //stockage des valeurs de chacune des cases de jeu de chacune des lignes, avec var1 celle la plus à droite, et var4 celle la plus à gauche
+        //Stockage des valeurs de chacune des cases de jeu de chacune des lignes, avec var1 celle la plus à droite, et var4 celle la plus à gauche :
         char var1 = tab[i][7];
         char var2 = tab[i][5];
         char var3 = tab[i][3];
         char var4 = tab[i][1];
+
         //#0 : cas où une ligne entière est remplie par la même treat
         if (var1==var2 && var1==var3 && var1==var4 && var1!=' ')
         {
@@ -232,7 +236,7 @@ void FusionGoRight(char[][] tab)
             if (var1 == '¤')
             {
                 tab[i][7] = '@';
-                tab[i][5] = ' ';//on vide la case de gauche puisqu"='on veut aller à droite
+                tab[i][5] = ' ';//on vide la case de gauche puisqu'on veut aller à droite
                 tab[i][3] = '@';
                 tab[i][1] = ' ';//on vide la case de gauche
             }
@@ -271,6 +275,7 @@ void FusionGoRight(char[][] tab)
                 tab[i][5] = ' ';//on vide la case de gauche
             }
         }
+        //même principe pour l'ensemble des autres cas, pour plus de détails : se réferrer au document permettant la justification technique
         //#2
         else if (var1!=' ' && var1!=var2 && var2!=' ' && var2==var3 && var3==var4)
         {
@@ -427,12 +432,14 @@ void FusionGoRight(char[][] tab)
     }
 }
 
+//On réitère exactement le meme principe pour les trois autres directions de l'espace : 'left', 'up' et 'down'.
+
 //2.FusionGoLeft
 void FusionGoLeft(char[][] tab)
 {
-    for (int j = 0; j < 4; j++)//i permet de passer sur chaque ligne du tableau, et ainsi de trier toutes les lignes
+    for (int j = 0; j < 4; j++)
     {
-        int i =2*j+1; // i nous permet d'obtenir les indices des lignes sur les lesquelles on joue seulement (et non les lignes de délimitations des cases)
+        int i =2*j+1;
         
         //stockage des valeurs de chacune des cases de la première ligne, avec var1 celle la + à droite et var4 celle la + à gauche :
         char var1 = tab[i][1];
@@ -442,6 +449,7 @@ void FusionGoLeft(char[][] tab)
 
         if(var1==var2 && var1==var3 && var1==var4 && var1!=' ')        
         {
+            //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à gauche entre les deux cases évaluées
             if (var1 == '¤')
             {
                 tab[i][1] = '@';
@@ -464,9 +472,8 @@ void FusionGoLeft(char[][] tab)
                 tab[i][7] = ' ';
             }
         }
-        else if (var1 != ' ' && var1 == var2)//on a alors le même bonbon dans les 2cases les + à gauche, et on est sûr de ne pas avoir de vide dans ces deux cases là
+        else if (var1 != ' ' && var1 == var2)
         {
-            //fusionnage des bonbons, et on met le résultat de la fusion dans la case la plus à gauche entre les deux cases évaluées
             if (var1 == '¤')
             {
                 tab[i][1] = '@';
@@ -634,7 +641,7 @@ void FusionGoLeft(char[][] tab)
 //3. FusionGoUp
 void FusionGoUp(char[][] tab)
 {
-    for (int j = 0; j < 4; j++)//i permet de passer sur chaque colonne du tableau, et ainsi de trier toutes les lignes
+    for (int j = 0; j < 4; j++)
     {
         int i =2*j+1; // i nous permet d'obtenir les indices des colonnes sur les lesquelles on joue seulement (et non les colonnes de délimitations des cases)
         
@@ -1038,29 +1045,29 @@ void FusionGoDown(char[][] tab)
 //---------------------------------------------------------------------------------------------------------------------------
 
 
-//Ensuite, on s'occupe de décaller au max les bonbons vers la droite, vers la gauche, le haut ou le bas, selon la touche pressée par l'utilisateur, en comblant les blancs, mais en ne fusionnant rien du tout.
-//Les fonctions s'appeleront : DecallerLesTreatsDroite, DecallerLesTreatsGauche, DecallerLesTreatsHaut et enfin, DecallerLesTreatsBas.
+//Ensuite, on s'occupe de décaller au maximum les treats vers la droite, la gauche, le haut ou le bas, selon la touche pressée par l'utilisateur, en comblant les blancs, mais en ne fusionnant rien du tout.
+//Les fonctions s'appeleront : 'DecallerLesTreatsDroite', 'DecallerLesTreatsGauche', 'DecallerLesTreatsHaut' et enfin, 'DecallerLesTreatsBas'.
 
 //1.DecallerLesTreatsDroite :
 void DecallerLesTreatsDroite(char[][] tab)
 {
-    for (int m = 0; m < 9; m++)//pour parcourir chacune des 9 lignes du plateauDeJeu
+    for (int m = 0; m < 9; m++)// pour parcourir chacune des 9 lignes du plateauDeJeu
     {
-        for (int n = 0; n < 7; n++)//on le fait 7 fois car cest le max pour tout decaller à droite (il y a 7 combinaisons possibles de répartition des treats sur une ligne)
+        for (int n = 0; n < 7; n++)// On le fait 7 fois car c'est le maximum pour tout decaller à droite (il y a 7 combinaisons possibles de répartition des treats sur une ligne).
         {
-            for (int i = 3; i > 0; i--) //i prend les valeurs 3 2 1 
+            for (int i = 3; i > 0; i--) // i prend les valeurs 3, 2 et 1 
             {
-                int p = 2 * i + 1;//p prend les valeurs 7 5 3
+                int p = 2 * i + 1;// p prend les valeurs 7, 5 et 3
 
-                char varD = tab[m][p];//avec m la ligne, et p = 7, 5 ou 3, càd que varD prend la valeur de var1, var2 ou var3
-                char varG = tab[m][p - 2]; //p-2 prend les valeurs 5, 3, ou 1, càd que varG prend les valeurs de var2, var3 ou var4
+                char varD = tab[m][p];// avec m la ligne, et p = 7, 5 ou 3, càd que varD prend la valeur de var1, var2 ou var3
+                char varG = tab[m][p - 2]; // p-2 prend les valeurs 5, 3, ou 1, càd que varG prend les valeurs de var2, var3 ou var4
 
-                if (varD == ' ')//si case de droite est vide
+                if (varD == ' ')// si case de droite est vide
                 {
-                    if (varG != ' ')//si case de gacuhe non vide
+                    if (varG != ' ')// si case de gauche est non vide
                     {
-                        tab[m][p] = varG;//alors on décale varG dans varD
-                        tab[m][p - 2] = ' ';//on vide la case de gauche
+                        tab[m][p] = varG;// alors on décale varG dans varD
+                        tab[m][p - 2] = ' ';// et on vide la case de gauche
                     }
                 }
             }
